@@ -7,6 +7,7 @@ import com.amd.backend.Global.Config.JWT.Token.TokenProvider;
 import com.amd.backend.Global.Result.Exception.RefreshTokenInvalidException;
 import com.amd.backend.Global.Result.Exception.UserAlreadyLogoutException;
 import com.amd.backend.Global.Result.Exception.UserEmailAlreadyExistsException;
+import com.amd.backend.Global.Result.Exception.UserNameAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
@@ -55,9 +56,12 @@ public class AuthService {
      * @return responseUserDTO
      */
     @Transactional
-    public ResponseUserDTO signup(RequestUserRegisterDTO requestUserRegisterDTO){
+    public ResponseUserDTO signup(RequestUserRegisterDTO requestUserRegisterDTO) throws Exception{
         if(userRepository.existsByEmail(requestUserRegisterDTO.getEmail())){        // 만약 이메일이 이미 존재한다면
             throw new UserEmailAlreadyExistsException();
+        }
+        if(userRepository.existsByName((requestUserRegisterDTO.getName()))){
+            throw new UserNameAlreadyExistsException();
         }
 
         UserEntity userEntity = requestUserRegisterDTO.toEntity();

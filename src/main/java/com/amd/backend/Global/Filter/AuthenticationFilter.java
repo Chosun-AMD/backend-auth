@@ -33,6 +33,7 @@ import java.util.*;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private UserService userService;
     private Environment env;        // expiredToken, JWT_Secret
+    private String ROLES;
     private TokenRepository tokenRepository;
     private final String AUTHORIZATION_HEADER = "Authorization";
     private final String UUID_HEADER = "UUID";
@@ -101,5 +102,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         response.addHeader(AUTHORIZATION_HEADER, BEARER_PREFIX + accessToken);
         response.addHeader(EXPIRED_HEADER, String.valueOf(expiredTime));
         response.addHeader(UUID_HEADER, userDetails.getUserId());
+        response.addHeader(ROLES, "ROLE_ADMIN");
     }
 }

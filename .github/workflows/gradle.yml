@@ -41,5 +41,5 @@ jobs:
       if: contains(github.ref, 'main')
       run: |
           docker login -u ${{ secrets.DOCKER_USERNAME_GHKDTLWNS987 }} -p ${{ secrets.DOCKER_PASSWORD_GHKDTLWNS987 }}
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO_AUTH }} .
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }} .
           docker push ${{ secrets.DOCKER_REPO }}

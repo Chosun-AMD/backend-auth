@@ -2,7 +2,7 @@
 - AMD 프로젝트에서 인증 토큰을 발급하는 서비스입니다.
 - 인증 토큰으로 `JWT Token`을 사용하며 `Bearer Type`를 사용합니다. 
 - 현재 구현된 기능은 다음과 같습니다.
-
+ 
 1. 회원가입
 ![image](https://github.com/Chosun-AMD/backend-auth/assets/54488922/68e6cfb6-7101-40d7-a821-a6f6d7ac374a)
 2. 로그인
